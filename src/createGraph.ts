@@ -1,7 +1,10 @@
 import { Arc } from './Arc';
 import { Digraph } from './Digraph';
 import getArcKey from './getArcKey';
-export const createGraph = (arcs: ReadonlyArray<Readonly<[number, number]>>, extraVertices: ReadonlyArray<number> = []) => {
+export const createGraph = (
+    arcs: ReadonlyArray<Readonly<[number, number]>>,
+    extraVertices: ReadonlyArray<number> = [],
+) => {
     const vertices = new Set<number>(extraVertices);
     const arcSet = new Map<string, Arc>();
     arcs.forEach((arc) => {
