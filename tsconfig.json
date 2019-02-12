@@ -1,28 +1,21 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "esModuleInterop": true,
+        "declaration": true,
+        "forceConsistentCasingInFileNames": true,
         "module": "commonjs",
-        "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,
-        "outDir": "./dist/",
-        "paths": {
-            "*": [
-                "node_modules/*",
-                "custom_typings/*"
-            ]
-        },
-        "sourceMap": false,
-        "rootDir": "./src/",
+        "outDir": "dist",
         "strict": true,
-        "target": "es2017",
-        "typeRoots": ["node_modules/@types", "custom_typings"]
+        "target": "es2016"
     },
     "exclude": [
-        "node_modules"
+        "./**/*.spec.ts"
     ],
     "include": [
-        "./src/**/*.ts",
-    ]
+        "./src/**/*.ts"
+    ],
+    "paths": {
+        "simple-digraph": "."
+    }
 }

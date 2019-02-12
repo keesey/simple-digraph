@@ -1,17 +1,21 @@
 {
-  "author": "T. Michael Keesey <keesey@gmail.com>",
+  "author": {
+    "email": "keesey+phylopic@gmail.com",
+    "name": "T. Michael Keesey"
+  },
   "description": "Simple utilities for processing directed graphs with numerical vertices.",
   "license": "MIT",
   "main": "dist/index.js",
   "name": "simple-digraph",
   "repository": "https://github.com/keesey/simple-digraph",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "lint": "tslint ./src/**/*.ts",
     "lint-fix": "tslint ./src/**/*.ts --fix",
     "test": "mocha -r ts-node/register \"./src/**/*.spec.ts\"",
     "postinstall": "tsc"
   },
+  "types": "dist/index.d.ts",
   "version": "0.1.0",
   "devDependencies": {
     "@types/chai": "^4.1.7",
