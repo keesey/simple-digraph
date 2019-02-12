@@ -11,19 +11,34 @@
     "mocha": "^5.2.0",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3",
+    "yarn": "^1.13.0"
   },
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "graph",
+    "digraph",
+    "graph theory",
+    "directed graph",
+    "arc"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "name": "simple-digraph",
   "repository": "https://github.com/keesey/simple-digraph",
   "scripts": {
-    "build": "rm -rf dist && tsc && cp src/*.d.ts dist",
+    "build": "tsc && cp src/*.d.ts dist",
     "lint": "tslint ./src/**/*.ts",
     "lint-fix": "tslint ./src/**/*.ts --fix",
+    "postversion": "git push && git push --tags",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
+    "preversion": "yarn lint",
     "test": "mocha -r ts-node/register \"./src/**/*.spec.ts\"",
-    "postinstall": "rm -rf dist && tsc && cp src/*.d.ts dist"
+    "version": "yarn lint-fix && git add -A src"
   },
   "types": "dist/index.d.ts",
-  "version": "0.1.5"
+  "version": "0.1.6"
 }
