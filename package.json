@@ -18,12 +18,12 @@
   "name": "simple-digraph",
   "repository": "https://github.com/keesey/simple-digraph",
   "scripts": {
-    "build": "rm -rf dist && mkdir dist && cp src/*.d.ts dist && tsc",
+    "build": "rm -rf dist && tsc && cp src/*.d.ts dist",
     "lint": "tslint ./src/**/*.ts",
     "lint-fix": "tslint ./src/**/*.ts --fix",
     "test": "mocha -r ts-node/register \"./src/**/*.spec.ts\"",
-    "postinstall": "mkdir dist && cp src/*.d.ts dist && tsc"
+    "postinstall": "rm -rf dist && tsc && cp src/*.d.ts dist"
   },
   "types": "dist/index.d.ts",
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
