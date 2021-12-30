@@ -86,7 +86,7 @@ yarn lint
 To fix some errors while linting, use:
 
 ```shell
-yarn lint-fix
+yarn lint --fix
 ```
 
 ## Contributing
