@@ -23,7 +23,7 @@ const adjacencyMatrix = (vertexList: number[], arcs: ArcSet) => {
   }
   return matrix;
 };
-export const transitiveClosure = (graph: Digraph) => {
+export const transitiveClosure = (graph: Digraph): Digraph => {
   const n = graph[0].size;
   const vertexList = Array.from(graph[0].values());
   const closureMatrix = adjacencyMatrix(vertexList, graph[1]);
@@ -46,6 +46,6 @@ export const transitiveClosure = (graph: Digraph) => {
       }
     }
   }
-  return [graph[0], arcs] as Digraph;
+  return [graph[0], arcs];
 };
 export default transitiveClosure;

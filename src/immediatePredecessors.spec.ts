@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import { describe, it } from "mocha";
 import createGraph from "./createGraph";
+import EMPTY_SET from "./EMPTY_SET";
 import immediatePredecessors from "./immediatePredecessors";
 describe("graphs/immediatePredecessors", () => {
   it("should return an empty set for an empty graph and an empty set of IDs", () => {
@@ -8,10 +9,7 @@ describe("graphs/immediatePredecessors", () => {
     expect(actual.size).to.equal(0);
   });
   it("should return an empty set for a populated graph and an empty set of IDs", () => {
-    const actual = immediatePredecessors(
-      createGraph([[1, 2]]),
-      new Set<number>()
-    );
+    const actual = immediatePredecessors(createGraph([[1, 2]]), EMPTY_SET);
     expect(actual.size).to.equal(0);
   });
   it("should return an empty set for an empty graph and a populated set of IDs", () => {
@@ -39,6 +37,16 @@ describe("graphs/immediatePredecessors", () => {
         [2, 3],
       ]),
       new Set<number>([3])
+    );
+    expect(Array.from(actual).sort()).to.deep.equal([1, 2]);
+  });
+  it("should return parents for multiple children", () => {
+    const actual = immediatePredecessors(
+      createGraph([
+        [1, 2],
+        [2, 3],
+      ]),
+      new Set<number>([2, 3])
     );
     expect(Array.from(actual).sort()).to.deep.equal([1, 2]);
   });

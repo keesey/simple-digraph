@@ -1,5 +1,6 @@
 import { Digraph } from "./Digraph";
-export const subgraph = (graph: Digraph, vertices: ReadonlySet<number>) => {
+import { VertexSet } from "./VertexSet";
+export const subgraph = (graph: Digraph, vertices: VertexSet): Digraph => {
   const newVertices = new Set<number>(vertices);
   for (const vertex of vertices) {
     if (!graph[0].has(vertex)) {
@@ -14,6 +15,6 @@ export const subgraph = (graph: Digraph, vertices: ReadonlySet<number>) => {
       arcs.set(key, arc);
     }
   }
-  return [newVertices, arcs] as Digraph;
+  return [newVertices, arcs];
 };
 export default subgraph;

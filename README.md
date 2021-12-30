@@ -13,8 +13,14 @@ This project requires `npm` or `yarn`.
 ### Creating a directed graph
 
 ```javascript
-import { createGraph } from 'simple-digraph';
-const graph = createGraph([[1, 2], [2, 3]], new Set([4]));
+import { createGraph } from "simple-digraph";
+const graph = createGraph(
+  [
+    [1, 2],
+    [2, 3],
+  ],
+  new Set([4])
+);
 console.log(JSON.stringify([[...graph[0]], [...graph[1].values()]]));
 // [[1,2,3],[[1,2],[2,3]]]
 ```
@@ -22,8 +28,11 @@ console.log(JSON.stringify([[...graph[0]], [...graph[1].values()]]));
 ### Immediate Predecessors
 
 ```javascript
-import { createGraph, immediatePredecessors } from 'simple-digraph';
-const graph = createGraph([[1, 3], [2, 3]]);
+import { createGraph, immediatePredecessors } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
 const parents = immediatePredecessors(graph, new Set([3]));
 console.log(parents);
 // Set(2) {1, 2}
@@ -32,8 +41,11 @@ console.log(parents);
 ### Sinks
 
 ```javascript
-import { createGraph, sinks } from 'simple-digraph';
-const graph = createGraph([[1, 3], [2, 3]]);
+import { createGraph, sinks } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
 const terminals = sinks(graph);
 console.log(terminals);
 // Set(1) {3}
@@ -42,8 +54,11 @@ console.log(terminals);
 ### Subgraph
 
 ```javascript
-import { createGraph, subgraph } from 'simple-digraph';
-const graph = createGraph([[1, 3], [2, 3]]);
+import { createGraph, subgraph } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
 const partial = subgraph(graph, new Set([1, 3]));
 console.log(JSON.stringify([[...partial[0]], [...partial[1].values()]]));
 // [[1,3],[[1,3]]]
@@ -52,8 +67,11 @@ console.log(JSON.stringify([[...partial[0]], [...partial[1].values()]]));
 ### Transitive Closure
 
 ```javascript
-import { createGraph, transitiveClosure } from 'simple-digraph';
-const graph = createGraph([[1, 3], [2, 3]]);
+import { createGraph, transitiveClosure } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
 const closure = transitiveClosure(graph, new Set([1, 3]));
 console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
 ```
@@ -61,8 +79,11 @@ console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
 ### Transitive Reduction
 
 ```javascript
-import { createGraph, transitiveReduction } from 'simple-digraph';
-const graph = createGraph([[1, 3], [2, 3]]);
+import { createGraph, transitiveReduction } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
 const closure = transitiveReduction(graph, new Set([1, 3]));
 console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
 ```
@@ -86,7 +107,7 @@ yarn lint
 To fix some errors while linting, use:
 
 ```shell
-yarn lint --fix
+yarn format && yarn lint --fix
 ```
 
 ## Contributing
@@ -95,11 +116,11 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of cond
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **T. Michael Keesey** - *Creator* - [keesey](https://github.com/keesey)
+- **T. Michael Keesey** - _Creator_ - [keesey](https://github.com/keesey)
 
 ## License
 

@@ -1,7 +1,8 @@
 import { Digraph } from "./Digraph";
-export const sinks = (graph: Digraph) => {
-  const vertices = new Set<number>(graph[0].values());
-  graph[1].forEach((arc) => vertices.delete(arc[0]));
-  return vertices as ReadonlySet<number>;
+import { VertexSet } from "./VertexSet";
+export const sinks = (graph: Digraph): VertexSet => {
+  const result = new Set<number>(graph[0].values());
+  graph[1].forEach((arc) => result.delete(arc[0]));
+  return result;
 };
 export default sinks;
