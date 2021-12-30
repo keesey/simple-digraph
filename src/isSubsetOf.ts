@@ -1,3 +1,4 @@
+import { VertexSet } from "./VertexSet";
 export const isSubsetOf = (a: VertexSet, b: VertexSet): boolean => {
   if (a.size > b.size) {
     return false;
