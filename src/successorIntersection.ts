@@ -1,5 +1,7 @@
-import { getArcKey, transitiveClosure } from ".";
 import { Digraph } from "./Digraph";
+import getArcKey from "./getArcKey";
+import transitiveClosure from "./transitiveClosure";
+import { VertexSet } from "./VertexSet";
 export const successorIntersection = (
   graph: Digraph,
   vertices: VertexSet

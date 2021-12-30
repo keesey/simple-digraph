@@ -13,7 +13,7 @@ export const predecessorIntersection = (
   const verticesArray = [...vertices];
   const closure = transitiveClosure(graph);
   const arcKeys = new Set(closure[1].keys());
-  const prcs = [...graph[0].values()].filter((prc) =>
+  const prcs = [...graph[0]].filter((prc) =>
     verticesArray.every((v) => v === prc || arcKeys.has(getArcKey([prc, v])))
   );
   return new Set<number>(prcs);

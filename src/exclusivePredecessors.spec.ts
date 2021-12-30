@@ -22,7 +22,7 @@ describe("exclusivePredecessors", () => {
   ) => {
     it(`should return {${[...expected].sort().join(", ")}} for {${[...internal]
       .sort()
-      .join(", ")}} <- {${[...external].sort().join(", ")}}`, () => {
+      .join(", ")}} ← {${[...external].sort().join(", ")}}`, () => {
       const actual = exclusivePredecessors(
         graph,
         new Set(internal),

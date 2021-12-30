@@ -1,5 +1,6 @@
-import { transitiveClosure } from ".";
 import { Digraph } from "./Digraph";
+import transitiveClosure from "./transitiveClosure";
+import { VertexSet } from "./VertexSet";
 export const successorUnion = (
   graph: Digraph,
   vertices: VertexSet
