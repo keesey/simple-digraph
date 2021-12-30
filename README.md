@@ -8,7 +8,72 @@ This project requires `npm` or `yarn`.
 
 ## Usage
 
-### Creating a directed graph
+### Sets
+
+### Empty Set
+
+As a convenience, an empty set is available as a constant:
+
+```javascript
+import { EMPTY_SET } from "simple-digraph";
+console.log(EMPTY_SET);
+// Set(0) {size: 0}
+```
+
+#### Subset/Superset
+
+```javascript
+import {
+  isProperSubsetOf,
+  isProperSupersetOf,
+  isSubsetOf,
+  isSupersetOf,
+} from "simple-digraph";
+console.log(isSubsetOf(new Set([1]), new Set([1, 2, 3])));
+// true
+console.log(isSubsetOf(new Set([1, 2, 3]), new Set([1, 2, 3])));
+// true
+console.log(isProperSubsetOf(new Set([1]), new Set([1, 2, 3])));
+// true
+console.log(isProperSubsetOf(new Set([1, 2, 3]), new Set([1, 2, 3])));
+// false
+console.log(isSupersetOf(new Set([1, 2, 3]), new Set([1])));
+// true
+console.log(isSupersetOf(new Set([1, 2, 3]), new Set([1, 2, 3])));
+// true
+console.log(isProperSupersetOf(new Set([1, 2, 3]), new Set([1])));
+// true
+console.log(isProperSupersetOf(new Set([1, 2, 3]), new Set([1, 2, 3])));
+// false
+```
+
+#### Union
+
+```javascript
+import { union } from "simple-digraph";
+console.log(union(new Set([1, 2]), new Set([2, 3]), new Set([4, 5])));
+// Set(5) {1, 2, 3, 4, 5}
+```
+
+#### Intersection
+
+```javascript
+import { intersection } from "simple-digraph";
+console.log(intersection(new Set([1, 2]), new Set([1, 3]), new Set([1, 4])));
+// Set(1) {1}
+```
+
+#### Difference
+
+```javascript
+import { difference } from "simple-digraph";
+console.log(difference(new Set([1, 2, 3]), new Set([3, 4, 5])));
+// Set(2) {1, 2}
+```
+
+### Graphs
+
+#### Creating a Directed Graph
 
 ```javascript
 import { createGraph } from "simple-digraph";
@@ -23,6 +88,8 @@ console.log(JSON.stringify([[...graph[0]], [...graph[1].values()]]));
 // [[1,2,3,4],[[1,2],[2,3]]]
 ```
 
+##### Creating a Directed, Acyclic Graph
+
 A convenience method, `createAcyclicGraph`, will create a graph but throw an error if there are any cycles.
 
 ```javascript
@@ -33,7 +100,75 @@ const graph = createAcyclicGraph([
 ]); // Throws error!
 ```
 
-### Immediate Predecessors/Successors
+#### Detecting Cyclicity
+
+```javascript
+import { isCyclic } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [2, 1],
+]);
+console.log(isCyclic(graph));
+// true
+```
+
+#### Sinks/Sources
+
+```javascript
+import { createGraph, sinks } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
+const terminals = sinks(graph);
+console.log(terminals);
+// Set(1) {3}
+const initials = sources(graph);
+console.log(initials);
+// Set(2) {1, 2}
+```
+
+#### Subgraph
+
+```javascript
+import { createGraph, subgraph } from "simple-digraph";
+const graph = createGraph([
+  [1, 3],
+  [2, 3],
+]);
+const partial = subgraph(graph, new Set([1, 3]));
+console.log(JSON.stringify([[...partial[0]], [...partial[1].values()]]));
+// [[1,3],[[1,3]]]
+```
+
+#### Transitive Closure
+
+```javascript
+import { createGraph, transitiveClosure } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [2, 3],
+]);
+const closure = transitiveClosure(graph, new Set([1, 3]));
+console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
+// [[1,2,3],[[1,2],[1,3],[2,3]]]
+```
+
+#### Transitive Reduction
+
+```javascript
+import { createGraph, transitiveReduction } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [1, 3],
+  [2, 3],
+]);
+const closure = transitiveReduction(graph, new Set([1, 3]));
+console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
+// [[1,2,3],[[1,2],[2,3]]]
+```
+
+#### Immediate Predecessors/Successors
 
 ```javascript
 import {
@@ -54,60 +189,67 @@ console.log(children);
 // Set(2) {3, 4}
 ```
 
-### Sinks/Sources
+#### Maximal/Minimal
+
+Defined [here](http://namesonnodes.org/ns/math/2009/index.html#def-Maximal) and [here](http://namesonnodes.org/ns/math/2009/index.html#def-Minimal).
 
 ```javascript
-import { createGraph, sinks } from "simple-digraph";
-const graph = createGraph([
-  [1, 3],
-  [2, 3],
-]);
-const terminals = sinks(graph);
-console.log(terminals);
-// Set(1) {3}
-const initials = sources(graph);
-console.log(initials);
-// Set(2) {1, 2}
-```
-
-### Subgraph
-
-```javascript
-import { createGraph, subgraph } from "simple-digraph";
-const graph = createGraph([
-  [1, 3],
-  [2, 3],
-]);
-const partial = subgraph(graph, new Set([1, 3]));
-console.log(JSON.stringify([[...partial[0]], [...partial[1].values()]]));
-// [[1,3],[[1,3]]]
-```
-
-### Transitive Closure
-
-```javascript
-import { createGraph, transitiveClosure } from "simple-digraph";
-const graph = createGraph([
-  [1, 2],
-  [2, 3],
-]);
-const closure = transitiveClosure(graph, new Set([1, 3]));
-console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
-// [[1,2,3],[[1,2],[1,3],[2,3]]]
-```
-
-### Transitive Reduction
-
-```javascript
-import { createGraph, transitiveReduction } from "simple-digraph";
+import { maximal, minimal } from "simple-digraph";
 const graph = createGraph([
   [1, 2],
   [1, 3],
-  [2, 3],
 ]);
-const closure = transitiveReduction(graph, new Set([1, 3]));
-console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
-// [[1,2,3],[[1,2],[2,3]]]
+console.log(maximal(graph, graph[0]));
+// Set(2) {2, 3}
+console.log(minimal(graph, graph[0]));
+// Set(1) {1}
+```
+
+#### Predecessor/Successor Union
+
+Defined [here](http://namesonnodes.org/ns/math/2009/index.html#def-PredecessorUnion) and [here](http://namesonnodes.org/ns/math/2009/index.html#def-SuccessorUnion).
+
+```javascript
+import { predecessorUnion, successorUnion } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [1, 3],
+]);
+console.log(predecessorUnion(graph, new Set([2, 3])));
+// Set(3) {1, 2, 3}
+console.log(successorUnion(graph, new Set([2, 3])));
+// Set(3) {2, 3}
+```
+
+#### Predecessor/Successor Intersection
+
+Defined [here](http://namesonnodes.org/ns/math/2009/index.html#def-PredecessorIntersection) and [here](http://namesonnodes.org/ns/math/2009/index.html#def-SuccessorIntersection).
+
+```javascript
+import { predecessorIntersection, successorIntersection } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [1, 3],
+]);
+console.log(predecessorIntersection(graph, new Set([2, 3])));
+// Set(1) {1}
+console.log(successorIntersection(graph, new Set([2, 3])));
+// Set(0) {size: 0}
+```
+
+#### Exclusive Predecessors
+
+Defined [here](http://namesonnodes.org/ns/math/2009/index.html#def-ExclusivePredecessors).
+
+```javascript
+import { createGraph, exclusivePredecessors } from "simple-digraph";
+const graph = createGraph([
+  [1, 2],
+  [1, 3],
+]);
+const parents = exclusivePredecessors(graph, new Set([2]), new Set([3]));
+console.log(parents);
+// Set(1) {2}
 ```
 
 ## Running the tests
