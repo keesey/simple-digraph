@@ -2,8 +2,6 @@
 
 Library with utilities for directed graphs with numerical vertices.
 
-Initially created for [PhyloPic](http://phylopic.org). Functionality may be extended at a later date.
-
 ### Prerequisites
 
 This project requires `npm` or `yarn`.
@@ -22,23 +20,41 @@ const graph = createGraph(
   new Set([4])
 );
 console.log(JSON.stringify([[...graph[0]], [...graph[1].values()]]));
-// [[1,2,3],[[1,2],[2,3]]]
+// [[1,2,3,4],[[1,2],[2,3]]]
 ```
 
-### Immediate Predecessors
+A convenience method, `createAcyclicGraph`, will create a graph but throw an error if there are any cycles.
 
 ```javascript
-import { createGraph, immediatePredecessors } from "simple-digraph";
+import { createAcyclicGraph } from "simple-digraph";
+const graph = createAcyclicGraph([
+  [1, 2],
+  [2, 1],
+]); // Throws error!
+```
+
+### Immediate Predecessors/Successors
+
+```javascript
+import {
+  createGraph,
+  immediatePredecessors,
+  immediateSuccessors,
+} from "simple-digraph";
 const graph = createGraph([
   [1, 3],
   [2, 3],
+  [1, 4],
 ]);
 const parents = immediatePredecessors(graph, new Set([3]));
 console.log(parents);
 // Set(2) {1, 2}
+const children = immediateSuccessors(graph, new Set([1]));
+console.log(children);
+// Set(2) {3, 4}
 ```
 
-### Sinks
+### Sinks/Sources
 
 ```javascript
 import { createGraph, sinks } from "simple-digraph";
@@ -49,6 +65,9 @@ const graph = createGraph([
 const terminals = sinks(graph);
 console.log(terminals);
 // Set(1) {3}
+const initials = sources(graph);
+console.log(initials);
+// Set(2) {1, 2}
 ```
 
 ### Subgraph
@@ -69,11 +88,12 @@ console.log(JSON.stringify([[...partial[0]], [...partial[1].values()]]));
 ```javascript
 import { createGraph, transitiveClosure } from "simple-digraph";
 const graph = createGraph([
-  [1, 3],
+  [1, 2],
   [2, 3],
 ]);
 const closure = transitiveClosure(graph, new Set([1, 3]));
 console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
+// [[1,2,3],[[1,2],[1,3],[2,3]]]
 ```
 
 ### Transitive Reduction
@@ -81,11 +101,13 @@ console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
 ```javascript
 import { createGraph, transitiveReduction } from "simple-digraph";
 const graph = createGraph([
+  [1, 2],
   [1, 3],
   [2, 3],
 ]);
 const closure = transitiveReduction(graph, new Set([1, 3]));
 console.log(JSON.stringify([[...closure[0]], [...closure[1].values()]]));
+// [[1,2,3],[[1,2],[2,3]]]
 ```
 
 ## Running the tests
