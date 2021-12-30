@@ -1,2 +1,2 @@
-import { Arc } from './Arc';
+import { Arc } from "./Arc";
 export type ArcSet = ReadonlyMap<string, Arc>;
