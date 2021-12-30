@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { describe, it } from "mocha";
 import createGraph from "./createGraph";
 import transitiveClosure from "./transitiveClosure";
-describe("graphs/transitiveClosure", () => {
+describe("transitiveClosure", () => {
   it("should return an empty graph for an empty graph", () => {
     const actual = transitiveClosure(createGraph([]));
     expect(actual).to.deep.equal(createGraph([]));

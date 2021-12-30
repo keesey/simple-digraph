@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { describe, it } from "mocha";
 import createGraph from "./createGraph";
 import subgraph from "./subgraph";
-describe("graphs/subgraph", () => {
+describe("subgraph", () => {
   describe("with an empty graph", () => {
     const GRAPH = createGraph([]);
     it("should return an empty graph if no vertices are specified", () => {

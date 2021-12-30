@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { describe, it } from "mocha";
 import createGraph from "./createGraph";
 import sinks from "./sinks";
-describe("graphs/sinks", () => {
+describe("sinks", () => {
   it("should return an empty set for an empty graph", () => {
     const actual = sinks(createGraph([]));
     expect(actual.size).to.equal(0);

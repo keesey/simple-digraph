@@ -3,7 +3,7 @@ import { describe, it } from "mocha";
 import EMPTY_SET from "./EMPTY_SET";
 import createGraph from "./createGraph";
 import immediateSuccessors from "./immediateSuccessors";
-describe("graphs/immediateSuccessors", () => {
+describe("immediateSuccessors", () => {
   it("should return an empty set for an empty graph and an empty set of IDs", () => {
     const actual = immediateSuccessors(createGraph([]), new Set<number>());
     expect(actual.size).to.equal(0);
