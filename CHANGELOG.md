@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2021-12-30
 
+### Changed
+
+- Updated year in `LICENSE.md`.
+
 ### Fixed
 
 - Export issues for `index.ts`.
