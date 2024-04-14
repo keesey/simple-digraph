@@ -6,6 +6,7 @@ export * from "./difference";
 export type { Digraph } from "./Digraph";
 export * from "./EMPTY_SET";
 export * from "./exclusivePredecessors";
+export * from "./findCyclicVertex";
 export * from "./getArcKey";
 export * from "./immediatePredecessors";
 export * from "./immediateSuccessors";

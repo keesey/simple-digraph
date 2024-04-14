@@ -47,5 +47,5 @@
     "version": "yarn format && yarn lint --fix && git add -A src"
   },
   "types": "dist/index.d.ts",
-  "version": "1.0.1"
+  "version": "1.1.0"
 }
