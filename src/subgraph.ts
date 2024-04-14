@@ -17,4 +17,3 @@ export const subgraph = (graph: Digraph, vertices: VertexSet): Digraph => {
   }
   return [newVertices, arcs];
 };
-export default subgraph;

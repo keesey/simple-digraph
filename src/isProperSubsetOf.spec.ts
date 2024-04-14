@@ -1,11 +1,10 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import isProperSubsetOf from "./isProperSubsetOf";
+import { describe, expect, it } from "vitest";
+import { isProperSubsetOf } from "./isProperSubsetOf";
 describe("isProperSubsetOf", () => {
   const test = (
     a: readonly number[],
     b: readonly number[],
-    expected: boolean
+    expected: boolean,
   ) => {
     it(`should return ${expected} for {${[...a].sort().join(", ")}} ⊂ {${[...b]
       .sort()

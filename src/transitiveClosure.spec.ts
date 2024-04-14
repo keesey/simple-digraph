@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import transitiveClosure from "./transitiveClosure";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { transitiveClosure } from "./transitiveClosure";
 describe("transitiveClosure", () => {
   it("should return an empty graph for an empty graph", () => {
     const actual = transitiveClosure(createGraph([]));

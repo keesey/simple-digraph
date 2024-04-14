@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import subgraph from "./subgraph";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { subgraph } from "./subgraph";
 describe("subgraph", () => {
   describe("with an empty graph", () => {
     const GRAPH = createGraph([]);
@@ -40,7 +39,7 @@ describe("subgraph", () => {
         createGraph([
           [2, 4],
           [4, 5],
-        ])
+        ]),
       );
     });
     it("should not include vertices not in the original graph", () => {
@@ -49,7 +48,7 @@ describe("subgraph", () => {
         createGraph([
           [1, 2],
           [2, 3],
-        ])
+        ]),
       );
     });
   });

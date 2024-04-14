@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import difference from "./difference";
-import EMPTY_SET from "./EMPTY_SET";
+import { describe, expect, it } from "vitest";
+import { EMPTY_SET } from "./EMPTY_SET";
+import { difference } from "./difference";
 describe("difference", () => {
   it("should return the empty set when subtracted from itself", () => {
     const actual = difference(EMPTY_SET, EMPTY_SET);

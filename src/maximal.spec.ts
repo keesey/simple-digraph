@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe } from "mocha";
-import createGraph from "./createGraph";
-import maximal from "./maximal";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { maximal } from "./maximal";
 describe("maximal", () => {
   const graph = createGraph([
     [0, 1],

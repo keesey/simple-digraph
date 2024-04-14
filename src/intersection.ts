@@ -1,5 +1,5 @@
 import { VertexSet } from "./VertexSet";
-import EMPTY_SET from "./EMPTY_SET";
+import { EMPTY_SET } from "./EMPTY_SET";
 
 export const intersection = (...sets: readonly VertexSet[]): VertexSet => {
   if (!sets.length) {
@@ -8,8 +8,7 @@ export const intersection = (...sets: readonly VertexSet[]): VertexSet => {
   const otherSets = sets.slice(1);
   return new Set(
     [...sets[0].values()].filter((v) =>
-      otherSets.every((otherSet) => otherSet.has(v))
-    )
+      otherSets.every((otherSet) => otherSet.has(v)),
+    ),
   );
 };
-export default intersection;

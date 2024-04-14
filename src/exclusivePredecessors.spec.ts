@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import exclusivePredecessors from "./exclusivePredecessors";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { exclusivePredecessors } from "./exclusivePredecessors";
 describe("exclusivePredecessors", () => {
   const graph = createGraph([
     [0, 1],
@@ -18,7 +17,7 @@ describe("exclusivePredecessors", () => {
   const test = (
     internal: readonly number[],
     external: readonly number[],
-    expected: readonly number[]
+    expected: readonly number[],
   ) => {
     it(`should return {${[...expected].sort().join(", ")}} for {${[...internal]
       .sort()
@@ -26,7 +25,7 @@ describe("exclusivePredecessors", () => {
       const actual = exclusivePredecessors(
         graph,
         new Set(internal),
-        new Set(external)
+        new Set(external),
       );
       expect([...actual].sort()).to.deep.equal([...expected].sort());
     });

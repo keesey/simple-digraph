@@ -7,4 +7,3 @@ export const sources = (graph: Digraph): VertexSet => {
   }
   return result;
 };
-export default sources;

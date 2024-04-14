@@ -1,10 +1,10 @@
 import { Digraph } from "./Digraph";
-import EMPTY_SET from "./EMPTY_SET";
-import transitiveClosure from "./transitiveClosure";
+import { EMPTY_SET } from "./EMPTY_SET";
+import { transitiveClosure } from "./transitiveClosure";
 import { VertexSet } from "./VertexSet";
 export const predecessorUnion = (
   graph: Digraph,
-  vertices: VertexSet
+  vertices: VertexSet,
 ): VertexSet => {
   if (vertices.size === 0) {
     return EMPTY_SET;
@@ -14,4 +14,3 @@ export const predecessorUnion = (
     .map(([head]) => head);
   return new Set<number>([...vertices, ...prcs]);
 };
-export default predecessorUnion;

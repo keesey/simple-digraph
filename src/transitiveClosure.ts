@@ -1,7 +1,7 @@
 import { Arc } from "./Arc";
 import { ArcSet } from "./ArcSet";
 import { Digraph } from "./Digraph";
-import getArcKey from "./getArcKey";
+import { getArcKey } from "./getArcKey";
 const adjacencyMatrix = (vertexList: number[], arcs: ArcSet) => {
   const n = vertexList.length;
   const matrix = new Array<boolean[]>(n);
@@ -48,4 +48,3 @@ export const transitiveClosure = (graph: Digraph): Digraph => {
   }
   return [graph[0], arcs];
 };
-export default transitiveClosure;

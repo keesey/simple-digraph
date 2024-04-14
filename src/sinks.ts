@@ -7,4 +7,3 @@ export const sinks = (graph: Digraph): VertexSet => {
   }
   return result;
 };
-export default sinks;

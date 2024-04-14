@@ -1,8 +1,7 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
+import { describe, expect, it } from "vitest";
 import { Digraph } from "./Digraph";
-import isCyclic from "./isCyclic";
+import { createGraph } from "./createGraph";
+import { isCyclic } from "./isCyclic";
 describe("isCyclic", () => {
   const test = (expected: boolean, graph: Digraph) => {
     it(`should detect [{${[...graph[0]].sort().join(", ")}}, {${[
@@ -21,7 +20,7 @@ describe("isCyclic", () => {
     createGraph([
       [1, 2],
       [2, 3],
-    ])
+    ]),
   );
   test(true, createGraph([[1, 1]]));
   test(
@@ -29,7 +28,7 @@ describe("isCyclic", () => {
     createGraph([
       [1, 2],
       [2, 1],
-    ])
+    ]),
   );
   test(
     true,
@@ -37,7 +36,7 @@ describe("isCyclic", () => {
       [1, 2],
       [2, 3],
       [3, 1],
-    ])
+    ]),
   );
   test(
     true,
@@ -48,6 +47,6 @@ describe("isCyclic", () => {
       [2, 3],
       [3, 6],
       [6, 1],
-    ])
+    ]),
   );
 });

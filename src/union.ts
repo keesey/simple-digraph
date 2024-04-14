@@ -4,4 +4,3 @@ export const union = (...sets: readonly VertexSet[]): VertexSet => {
   sets.forEach((set) => [...set].forEach((v) => result.add(v)));
   return result;
 };
-export default union;

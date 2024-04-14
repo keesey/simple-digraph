@@ -2,7 +2,7 @@ import { VertexSet } from "./VertexSet";
 import { Digraph } from "./Digraph";
 export const immediatePredecessors = (
   graph: Digraph,
-  vertices: VertexSet
+  vertices: VertexSet,
 ): VertexSet => {
   const result = new Set<number>();
   graph[1].forEach((arc) => {
@@ -12,4 +12,3 @@ export const immediatePredecessors = (
   });
   return result;
 };
-export default immediatePredecessors;

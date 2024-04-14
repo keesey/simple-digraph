@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import transitiveReduction from "./transitiveReduction";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { transitiveReduction } from "./transitiveReduction";
 describe("transitiveReduction", () => {
   it("should return an empty graph for an empty graph", () => {
     const actual = transitiveReduction(createGraph([]));

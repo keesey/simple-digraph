@@ -9,4 +9,3 @@ export const difference = (a: VertexSet, b: VertexSet): VertexSet => {
   });
   return result;
 };
-export default difference;

@@ -12,7 +12,7 @@ const isCyclicVertex = (
   graph: Digraph,
   vertex: number,
   visited: Record<number, true | undefined>,
-  stack: Record<number, true | undefined>
+  stack: Record<number, true | undefined>,
 ): boolean => {
   if (!visited[vertex]) {
     visited[vertex] = true;
@@ -40,4 +40,3 @@ export const findCyclicVertex = (graph: Digraph): number | null => {
   }
   return null;
 };
-export default findCyclicVertex;

@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import successorIntersection from "./successorIntersection";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { successorIntersection } from "./successorIntersection";
 describe("successorIntersection", () => {
   const graph = createGraph([
     [0, 1],

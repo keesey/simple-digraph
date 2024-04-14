@@ -1,6 +1,5 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import union from "./union";
+import { describe, expect, it } from "vitest";
+import { union } from "./union";
 describe("union", () => {
   const test = (
     expected: readonly number[],

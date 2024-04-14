@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import sinks from "./sinks";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { sinks } from "./sinks";
 describe("sinks", () => {
   it("should return an empty set for an empty graph", () => {
     const actual = sinks(createGraph([]));
@@ -20,7 +19,7 @@ describe("sinks", () => {
       createGraph([
         [1, 3],
         [2, 3],
-      ])
+      ]),
     );
     expect(Array.from(actual)).to.deep.equal([3]);
   });
@@ -29,7 +28,7 @@ describe("sinks", () => {
       createGraph([
         [1, 2],
         [1, 3],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([2, 3]);
   });
@@ -38,7 +37,7 @@ describe("sinks", () => {
       createGraph([
         [1, 3],
         [2, 4],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([3, 4]);
   });
@@ -48,7 +47,7 @@ describe("sinks", () => {
         [1, 2],
         [2, 3],
         [3, 4],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([4]);
   });
@@ -60,8 +59,8 @@ describe("sinks", () => {
           [2, 3],
           [3, 4],
         ],
-        [5]
-      )
+        [5],
+      ),
     );
     expect(Array.from(actual).sort()).to.deep.equal([4, 5]);
   });

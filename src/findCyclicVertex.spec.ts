@@ -1,8 +1,7 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
+import { describe, expect, it } from "vitest";
 import { Digraph } from "./Digraph";
-import findCyclicVertex from "./findCyclicVertex";
+import { createGraph } from "./createGraph";
+import { findCyclicVertex } from "./findCyclicVertex";
 describe("findCyclicVertex", () => {
   const test = (typeExpected: "number" | "null", graph: Digraph) => {
     it(`should detect [{${[...graph[0]].sort().join(", ")}}, {${[
@@ -25,7 +24,7 @@ describe("findCyclicVertex", () => {
     createGraph([
       [1, 2],
       [2, 3],
-    ])
+    ]),
   );
   test("number", createGraph([[1, 1]]));
   test(
@@ -33,7 +32,7 @@ describe("findCyclicVertex", () => {
     createGraph([
       [1, 2],
       [2, 1],
-    ])
+    ]),
   );
   test(
     "number",
@@ -41,7 +40,7 @@ describe("findCyclicVertex", () => {
       [1, 2],
       [2, 3],
       [3, 1],
-    ])
+    ]),
   );
   test(
     "number",
@@ -52,6 +51,6 @@ describe("findCyclicVertex", () => {
       [2, 3],
       [3, 6],
       [6, 1],
-    ])
+    ]),
   );
 });

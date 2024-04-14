@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import createGraph from "./createGraph";
-import sources from "./sources";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { sources } from "./sources";
 describe("sources", () => {
   it("should return an empty set for an empty graph", () => {
     const actual = sources(createGraph([]));
@@ -20,7 +19,7 @@ describe("sources", () => {
       createGraph([
         [1, 3],
         [2, 3],
-      ])
+      ]),
     );
     expect(Array.from(actual)).to.deep.equal([1, 2]);
   });
@@ -29,7 +28,7 @@ describe("sources", () => {
       createGraph([
         [1, 2],
         [1, 3],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([1]);
   });
@@ -38,7 +37,7 @@ describe("sources", () => {
       createGraph([
         [1, 3],
         [2, 4],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([1, 2]);
   });
@@ -48,7 +47,7 @@ describe("sources", () => {
         [1, 2],
         [2, 3],
         [3, 4],
-      ])
+      ]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([1]);
   });
@@ -60,8 +59,8 @@ describe("sources", () => {
           [2, 3],
           [3, 4],
         ],
-        [5]
-      )
+        [5],
+      ),
     );
     expect(Array.from(actual).sort()).to.deep.equal([1, 5]);
   });

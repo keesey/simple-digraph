@@ -1,9 +1,9 @@
 import { Arc } from "./Arc";
 import { Digraph } from "./Digraph";
-import getArcKey from "./getArcKey";
+import { getArcKey } from "./getArcKey";
 export const createGraph = (
   arcs: Iterable<Arc>,
-  extraVertices?: Iterable<number>
+  extraVertices?: Iterable<number>,
 ): Digraph => {
   const vertices = new Set(extraVertices);
   const arcSet = new Map<string, Arc>();
@@ -14,4 +14,3 @@ export const createGraph = (
   }
   return [vertices, arcSet];
 };
-export default createGraph;

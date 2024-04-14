@@ -1,8 +1,7 @@
-import { expect } from "chai";
-import { describe, it } from "mocha";
-import EMPTY_SET from "./EMPTY_SET";
-import createGraph from "./createGraph";
-import immediateSuccessors from "./immediateSuccessors";
+import { describe, expect, it } from "vitest";
+import { EMPTY_SET } from "./EMPTY_SET";
+import { createGraph } from "./createGraph";
+import { immediateSuccessors } from "./immediateSuccessors";
 describe("immediateSuccessors", () => {
   it("should return an empty set for an empty graph and an empty set of IDs", () => {
     const actual = immediateSuccessors(createGraph([]), new Set<number>());
@@ -19,14 +18,14 @@ describe("immediateSuccessors", () => {
   it("should return a single child", () => {
     const actual = immediateSuccessors(
       createGraph([[1, 2]]),
-      new Set<number>([1])
+      new Set<number>([1]),
     );
     expect(Array.from(actual)).to.deep.equal([2]);
   });
   it("should return no children if there are none", () => {
     const actual = immediateSuccessors(
       createGraph([[1, 2]]),
-      new Set<number>([2])
+      new Set<number>([2]),
     );
     expect(actual.size).to.equal(0);
   });
@@ -36,7 +35,7 @@ describe("immediateSuccessors", () => {
         [1, 2],
         [1, 3],
       ]),
-      new Set<number>([1])
+      new Set<number>([1]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([2, 3]);
   });
@@ -46,7 +45,7 @@ describe("immediateSuccessors", () => {
         [1, 2],
         [2, 3],
       ]),
-      new Set<number>([1, 2])
+      new Set<number>([1, 2]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([2, 3]);
   });
@@ -57,7 +56,7 @@ describe("immediateSuccessors", () => {
         [1, 3],
         [2, 4],
       ]),
-      new Set<number>([1])
+      new Set<number>([1]),
     );
     expect(Array.from(actual).sort()).to.deep.equal([2, 3]);
   });

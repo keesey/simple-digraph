@@ -5,4 +5,3 @@ export const isProperSubsetOf = (a: VertexSet, b: VertexSet): boolean => {
   }
   return [...a].every((v) => b.has(v));
 };
-export default isProperSubsetOf;

@@ -1,7 +1,6 @@
-import { expect } from "chai";
-import { describe } from "mocha";
-import createGraph from "./createGraph";
-import minimal from "./minimal";
+import { describe, expect, it } from "vitest";
+import { createGraph } from "./createGraph";
+import { minimal } from "./minimal";
 describe("minimal", () => {
   const graph = createGraph([
     [0, 1],

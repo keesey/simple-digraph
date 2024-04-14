@@ -1,7 +1,7 @@
 import { Arc } from "./Arc";
 import { Digraph } from "./Digraph";
-import getArcKey from "./getArcKey";
-import transitiveClosure from "./transitiveClosure";
+import { getArcKey } from "./getArcKey";
+import { transitiveClosure } from "./transitiveClosure";
 export const transitiveReduction = (graph: Digraph): Digraph => {
   const closure = transitiveClosure(graph);
   const arcs = new Map<string, Arc>(closure[1]);
@@ -25,4 +25,3 @@ export const transitiveReduction = (graph: Digraph): Digraph => {
   });
   return [graph[0], arcs];
 };
-export default transitiveReduction;
